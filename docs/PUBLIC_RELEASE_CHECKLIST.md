@@ -49,6 +49,12 @@ until human approval.
 ## Git state (public)
 
 - [x] Fresh repo initialized in `Gparatype-public` only
-- [x] Initial commit: `Initial public research release of Gparatype v0.2.1` (`5c9b2c34`)
+- [x] Initial commit: `Initial public research release of Gparatype v0.2.1` (`50023f9`)
 - [x] Bundle commit: `Bundle GparatypeDB-2026.1-freeze in package data for pip install` (`d040db6`)
+- [x] Docs sync commit (`ca5510f`); current HEAD documents package-data install path
 - [x] 77 tracked files; working tree clean
+- [ ] PI/institutional IP approval if required
+- [ ] GitHub private repository created
+- [ ] Remote configured
+- [ ] Private GitHub repository inspected
+- [ ] Repository visibility changed to public
