@@ -316,7 +316,16 @@ def load_database(path: Path | str | None = None) -> GparatypeDatabase:
     return db
 
 
+def _package_bundled_database_path() -> Path:
+    """GparatypeDB directory shipped inside the installed gparatype package."""
+    return Path(__file__).resolve().parent.parent / "data" / "GparatypeDB-2026.1-freeze"
+
+
 def default_database_path() -> Path:
     from gparatype.utils import project_root
+
+    bundled = _package_bundled_database_path()
+    if bundled.is_dir() and (bundled / "checksums.sha256").is_file():
+        return bundled
 
     return project_root() / "data" / "gparatype_db" / "GparatypeDB-2026.1-freeze"

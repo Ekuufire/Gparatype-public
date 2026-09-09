@@ -23,10 +23,22 @@ Gparatype does **not** claim reliable distinction of all 15 classical serovars. 
 
 Requires Python ≥3.9 and **NCBI BLAST+** (`blastn` on `PATH`).
 
+**Preferred:** clone this repository and install from the checkout root:
+
 ```bash
-pip install .
-# or editable: pip install -e ".[dev]"
+git clone <repo-url> Gparatype-public && cd Gparatype-public
+pip install ".[dev]"          # standard install; includes bundled freeze DB
+# or editable for development:
+pip install -e ".[dev]"
 ```
+
+`pip install .` (non-editable) ships `GparatypeDB-2026.1-freeze` inside the
+installed package at `gparatype/data/GparatypeDB-2026.1-freeze/`. The same
+database is also kept at `data/gparatype_db/GparatypeDB-2026.1-freeze/` in the
+repository for clone-and-run clarity. `default_database_path()` resolves the
+package-bundled copy first, then the repository copy.
+
+You can override the database with `--database /path/to/GparatypeDB-2026.1-freeze`.
 
 Optional conda environment (see `environment.yml`):
 

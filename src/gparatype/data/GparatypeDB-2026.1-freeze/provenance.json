@@ -1,0 +1,27 @@
+{
+  "database_version": "GparatypeDB-2026.1-dev",
+  "diagnostic_support": {
+    "citation": "Howell et al. 2015 Journal of Clinical Microbiology",
+    "doi": "10.1128/JCM.01114-15",
+    "role": "serovar_diagnostic_region_targets"
+  },
+  "inputs": [
+    "data/reference_sequences/metadata/howell2013_all_capsule_cds_manifest.tsv",
+    "data/reference_sequences/howell2013_cds/all_cds/*.fasta",
+    "data/curated/phase4d1_howell_reference_architecture_long.tsv",
+    "data/curated/phase4d1_howell_reference_architecture_summary.tsv",
+    "data/curated/phase4e_serovar_evidence_specification.tsv",
+    "data/curated/phase4e_result_state_specification.tsv",
+    "data/reference_sequences/molecular_targets/gparatype_howell15_targets.fasta"
+  ],
+  "notes": [
+    "Population genomes are NOT used as canonical references.",
+    "No ML / pangenome / legacy markers.",
+    "Research prototype database; not for clinical use."
+  ],
+  "primary_source": {
+    "citation": "Howell et al. 2013 Journal of Bacteriology",
+    "doi": "10.1128/JB.00471-13",
+    "role": "canonical_capsule_CDS_and_architectures"
+  }
+}

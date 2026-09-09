@@ -4,11 +4,12 @@
 
 | Item | Value |
 |---|---|
-| Directory | `data/gparatype_db/GparatypeDB-2026.1-freeze/` |
+| Repository directory | `data/gparatype_db/GparatypeDB-2026.1-freeze/` |
+| Package directory (pip install) | `gparatype/data/GparatypeDB-2026.1-freeze/` inside site-packages |
 | Freeze label | `GparatypeDB-2026.1-freeze` (see `VERSION_FREEZE.txt`) |
-| Scientific content identity | Byte-identical to private `GparatypeDB-2026.1-dev` at Phase 5A freeze |
+| Scientific content identity | Byte-identical copies at both locations |
 | `VERSION.txt` label | Still `GparatypeDB-2026.1-dev` (intentional; see `FREEZE_README.txt`) |
-| Default in public code | `default_database_path()` → `-freeze` directory |
+| Default in public code | `default_database_path()` → package copy if present, else repository copy |
 
 ## Contents
 
@@ -42,6 +43,8 @@ Verify:
 ```bash
 cd data/gparatype_db/GparatypeDB-2026.1-freeze
 sha256sum checksums.sha256
+# After pip install, the same file is at:
+# python -c "from gparatype.v02.database import default_database_path; print(default_database_path()/ 'checksums.sha256')"
 grep b01061ccc091d3cfe1b42381aea0a1cf9f891e7bffce76f7ebcfe312fa34285a db_manifest.tsv
 sha256sum -c checksums.sha256   # optional: verify all listed files
 ```

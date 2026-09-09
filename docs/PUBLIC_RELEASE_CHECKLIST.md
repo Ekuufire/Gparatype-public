@@ -23,8 +23,9 @@ until human approval.
 ## Installability / tests
 
 - [x] Fresh venv install verified (`pip install -e .[dev]` in `/tmp/gparatype-public-test-venv`)
+- [x] Fresh venv **non-editable** install verified (`pip install /home/labstudent/Gparatype-public` from `/tmp`; `default_database_path()` resolves to `site-packages/gparatype/data/GparatypeDB-2026.1-freeze`)
 - [x] `gparatype --help` / `--version` OK
-- [x] `pytest` passes (14 passed, 1 skipped)
+- [x] `pytest` passes (17 passed, 1 skipped)
 - [x] `gparatype.__file__` under Gparatype-public (not private repo)
 
 ## Safety audits
@@ -49,4 +50,5 @@ until human approval.
 
 - [x] Fresh repo initialized in `Gparatype-public` only
 - [x] Initial commit: `Initial public research release of Gparatype v0.2.1` (`5c9b2c34`)
-- [x] 60 tracked files; working tree clean
+- [x] Bundle commit: `Bundle GparatypeDB-2026.1-freeze in package data for pip install` (`942268d`)
+- [x] 77 tracked files; working tree clean

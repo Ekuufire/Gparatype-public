@@ -1,0 +1,6 @@
+GparatypeDB-2026.1-freeze
+freeze_date=2026-08-12
+source_db=GparatypeDB-2026.1-dev
+phase5a_commit=5f26cad7b5bf419597105e48bce5d530bf03fef8
+scientific_content=identical_to_GparatypeDB-2026.1-dev
+read_only=YES

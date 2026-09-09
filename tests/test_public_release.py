@@ -10,14 +10,20 @@ import pytest
 import gparatype
 from gparatype.blast import blastn_available, run_blastn
 from gparatype.utils import project_root, validate_nucleotide_fasta
-from gparatype.v02.database import default_database_path, load_database, validate_database
+from gparatype.v02.database import (
+    _package_bundled_database_path,
+    default_database_path,
+    load_database,
+    validate_database,
+)
 from gparatype.v02.hybrid_interpretation import interpret_profiles_hybrid
 from gparatype.v02.interpretation import interpret_profiles
 from gparatype.v02.models import ArchitectureEvidenceProfile, ArchitectureProfile, DiagnosticEvidence
 
 EXPECTED_CHECKSUMS_SHA256 = "b01061ccc091d3cfe1b42381aea0a1cf9f891e7bffce76f7ebcfe312fa34285a"
 PUBLIC_ROOT = Path(__file__).resolve().parents[1]
-DB = PUBLIC_ROOT / "data" / "gparatype_db" / "GparatypeDB-2026.1-freeze"
+ROOT_DB = PUBLIC_ROOT / "data" / "gparatype_db" / "GparatypeDB-2026.1-freeze"
+PKG_DB = _package_bundled_database_path()
 
 
 def test_version_is_021():
@@ -30,37 +36,61 @@ def test_project_root_finds_public_tree():
     assert "Gparatype-public" in str(root) or root == PUBLIC_ROOT
 
 
+def test_package_bundled_database_present_in_source_tree():
+    assert PKG_DB.is_dir()
+    assert (PKG_DB / "checksums.sha256").is_file()
+
+
 def test_default_database_is_freeze():
     db_path = default_database_path()
     assert db_path.name == "GparatypeDB-2026.1-freeze"
     assert db_path.is_dir()
     assert "-dev" not in db_path.name
+    assert (db_path / "checksums.sha256").is_file()
 
 
-def test_gparatype_installed_from_public_tree():
+def test_default_database_prefers_package_bundled():
+    assert default_database_path() == PKG_DB
+
+
+def test_both_checksums_sha256_files_match():
+    root_chk = ROOT_DB / "checksums.sha256"
+    pkg_chk = PKG_DB / "checksums.sha256"
+    assert root_chk.is_file() and pkg_chk.is_file()
+    for path in (root_chk, pkg_chk):
+        digest = hashlib.sha256(path.read_bytes()).hexdigest()
+        assert digest == EXPECTED_CHECKSUMS_SHA256
+    assert root_chk.read_bytes() == pkg_chk.read_bytes()
+
+
+def test_gparatype_source_tree_not_private_repo():
     pkg_path = Path(gparatype.__file__).resolve()
     path_str = str(pkg_path)
-    assert "Gparatype-public" in path_str
-    private_root = str(PUBLIC_ROOT).replace("Gparatype-public", "Gparatype")
-    assert not path_str.startswith(private_root + "/")
-    assert not path_str.startswith(private_root + "\\")
+    if "site-packages" in path_str:
+        assert "gparatype" in path_str
+        db_path = default_database_path()
+        norm = str(db_path).replace("\\", "/")
+        assert "gparatype/data/GparatypeDB-2026.1-freeze" in norm
+    else:
+        assert "Gparatype-public" in path_str
+        private_root = str(PUBLIC_ROOT).replace("Gparatype-public", "Gparatype")
+        assert not path_str.startswith(private_root + "/")
+        assert not path_str.startswith(private_root + "\\")
 
 
-def test_freeze_checksum_marker():
-    chk = DB / "checksums.sha256"
-    assert chk.is_file()
-    digest = hashlib.sha256(chk.read_bytes()).hexdigest()
-    assert digest == EXPECTED_CHECKSUMS_SHA256
+@pytest.mark.skipif(not ROOT_DB.is_dir(), reason="root freeze DB missing")
+def test_validate_root_freeze_database_ok():
+    assert validate_database(ROOT_DB) == []
 
 
-@pytest.mark.skipif(not DB.is_dir(), reason="freeze DB missing")
-def test_validate_freeze_database_ok():
-    assert validate_database(DB) == []
+@pytest.mark.skipif(not PKG_DB.is_dir(), reason="package freeze DB missing")
+def test_validate_package_freeze_database_ok():
+    assert validate_database(PKG_DB) == []
 
 
-@pytest.mark.skipif(not DB.is_dir(), reason="freeze DB missing")
-def test_load_freeze_database():
-    db = load_database(DB)
+@pytest.mark.skipif(not PKG_DB.is_dir(), reason="package freeze DB missing")
+def test_load_package_freeze_database():
+    db = load_database(PKG_DB)
     assert db.version == "GparatypeDB-2026.1-freeze"
     assert len(db.serovars) == 15
     assert len(db.components) == 253

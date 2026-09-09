@@ -7,10 +7,11 @@ from pathlib import Path
 import pytest
 
 from gparatype.utils import project_root
-from gparatype.v02.database import default_database_path, load_database, validate_database
+from gparatype.v02.database import _package_bundled_database_path, default_database_path, load_database, validate_database
 
 ROOT = project_root()
-DB = ROOT / "data" / "gparatype_db" / "GparatypeDB-2026.1-freeze"
+DB = _package_bundled_database_path()
+ROOT_DB = ROOT / "data" / "gparatype_db" / "GparatypeDB-2026.1-freeze"
 
 
 @pytest.mark.skipif(not DB.is_dir(), reason="GparatypeDB-2026.1-freeze not present")
@@ -33,4 +34,7 @@ def test_load_database_15_serovars_253_components():
 
 
 def test_default_path_points_to_freeze():
-    assert default_database_path().name == "GparatypeDB-2026.1-freeze"
+    path = default_database_path()
+    assert path.name == "GparatypeDB-2026.1-freeze"
+    assert path.is_dir()
+    assert (path / "checksums.sha256").is_file()

@@ -20,6 +20,9 @@ gparatype = "gparatype.cli:main"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+gparatype = ["data/GparatypeDB-2026.1-freeze/*"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
