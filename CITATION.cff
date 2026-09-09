@@ -9,7 +9,7 @@ abstract: >-
   Glaesserella parasuis (hybrid engine 0.2.1; GparatypeDB-2026.1-freeze).
   Research freeze only; not externally validated; not for clinical use.
 authors:
-  - name: "Gparatype project"
+  - name: "Emmanuel Kuufire"
 keywords:
   - Glaesserella parasuis
   - capsule locus
