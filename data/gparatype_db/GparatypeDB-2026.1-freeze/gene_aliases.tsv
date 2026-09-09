@@ -1,0 +1,6 @@
+canonical_gene	canonical_strain	alias	serovar	accession	note
+gltC3		glyC	3	KC795327.1	Howell 2015 diagnostic often labeled glyC; CDS gene_name gltC3
+funB1		funB	1	KC795280.1	Target FASTA short name funB
+	N4	No. 4	1		Reference strain alias No.4 / N4
+wcwK5		wcwK	5	KC795341.1	Shared 5/12 diagnostic gene family
+wcwK12		wcwK	12	KC795486.1	Shared 5/12 diagnostic gene family

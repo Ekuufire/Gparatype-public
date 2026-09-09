@@ -1,0 +1,21 @@
+name: gparatype
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - biopython
+  - requests
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyterlab
+  - nextflow
+  - ncbi-datasets-cli
+  # BLAST+ required on PATH for live genome searches (blastn).
+  # Install via bioconda when available; otherwise install NCBI BLAST+ system-wide.
+  - ncbi-blast

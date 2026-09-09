@@ -1,0 +1,4 @@
+# Optional convenience pin: install the local package (editable from repo root).
+# Runtime scientific deps for analysis are primarily listed in environment.yml.
+# BLAST+ (blastn) is an external system dependency — see environment.yml (ncbi-blast).
+.

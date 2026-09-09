@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+.env
+.env.*
+*.pem
+id_rsa
+id_rsa.*
+*.key
+secrets/
+
+# Editor / system
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.bak
+
+# Build / temp
+*.tmp
+*.temp
+dist/
+build/
+*.log
+
+# BLAST caches / working outputs
+*.nhr
+*.nin
+*.nsq
+results/
+
+# Do not commit large downloaded genomes
+*.fasta.gz
+*.fa.gz
+*.fna.gz
+data/validation_genomes/

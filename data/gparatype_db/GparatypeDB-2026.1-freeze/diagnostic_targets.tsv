@@ -1,0 +1,16 @@
+serovar	gene	accession	aliases	source	notes
+1	funB	KC795280.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+2	wzx	KC795299.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+3	glyC	KC795327.1	glyC	Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+4	wciP	KC795356.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+5	wcwK	KC795341.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+6	gltI	KC795372.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+7	funQ	KC795390.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+8	scdA	KC795411.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+9	funV	KC795429.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+10	funX	KC795448.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+11	amtA	KC795474.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+12	wcwK	KC795486.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+13	gltP	KC795500.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+14	funAB	KC795520.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule
+15	funI	KC795537.1		Howell2015_diagnostic_support;Phase3A_howell15;DOI:10.1128/JCM.01114-15	Diagnostic support target; not sole architecture call rule

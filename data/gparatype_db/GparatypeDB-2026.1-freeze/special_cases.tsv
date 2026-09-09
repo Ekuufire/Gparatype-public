@@ -1,0 +1,2 @@
+case_id	serovars	description	rule
+SPECIAL_CASE_5_12	5,12	Howell serovars 5 and 12 share inseparable capsule architecture/diagnostic evidence	Return SEROVAR_5_OR_12; never force numbered 5 or 12 alone
