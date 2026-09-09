@@ -50,5 +50,5 @@ until human approval.
 
 - [x] Fresh repo initialized in `Gparatype-public` only
 - [x] Initial commit: `Initial public research release of Gparatype v0.2.1` (`5c9b2c34`)
-- [x] Bundle commit: `Bundle GparatypeDB-2026.1-freeze in package data for pip install` (`942268d`)
+- [x] Bundle commit: `Bundle GparatypeDB-2026.1-freeze in package data for pip install` (`d040db6`)
 - [x] 77 tracked files; working tree clean
