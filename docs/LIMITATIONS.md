@@ -1,4 +1,4 @@
-# Scientific limitations (Gparatype 0.2.1-research)
+# Scientific limitations (Gparatype 0.2.1)
 
 Honest constraints for the research freeze. Read with
 [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
@@ -74,7 +74,7 @@ absence when assembly quality limits interpretation.
 Gparatype reports **serovar-associated genomic capsule architecture**. This is
 not equivalent to classical serological typing, mPCR clinical calls, or
 automatic override of historical labels. Not intended as a standalone
-veterinary diagnostic.
+veterinary diagnostic for now.
 
 ## 10. Conservative ambiguous / assembly-limited states
 
@@ -85,4 +85,4 @@ not a hidden failure mode to be optimized away on the discovery cohort.
 
 `CLINICAL_VALIDATION=NO`. Software version **`0.2.1`** with research label
 **0.2.1-research**. Not for diagnosis, clinical decision-making, or regulatory
-use. Phase 5F decision: **`PROMISING_BUT_NEEDS_REFINEMENT`**.
+use. Phase decision: **`PROMISING_BUT_NEEDS_REFINEMENT`**.
