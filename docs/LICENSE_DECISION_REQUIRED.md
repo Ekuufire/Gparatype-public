@@ -15,4 +15,4 @@ regarding:
 Until a license is chosen and committed as `LICENSE` (or equivalent),
 treat redistribution rights as **undefined**.
 
-Related freeze label: Gparatype **0.2.1-research** (`v0.2.1-research-freeze`).
+Related freeze label: Gparatype **0.2.1** (`v0.2.1-research-freeze`).
