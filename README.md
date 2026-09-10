@@ -123,7 +123,7 @@ gparatype \
   --output-dir results/example_run
 ```
 
-The command above uses the **Gparatype v0.2.1** hybrid engine by default. The --engine option is therefore not required for the standard workflow.
+The command above uses the **Gparatype v0.2.1** hybrid engine by default. The `--engine` option is therefore not required for the standard workflow.
 
 The equivalent explicit command is:
 ```bash
@@ -181,8 +181,9 @@ Legacy engines should generally be used when reproducing or comparing earlier an
 Python module invocation
 
 Gparatype can also be invoked as a Python module:
-
+```bash
 python -m gparatype
+```
 
 The installed gparatype command is the recommended interface for normal use.
 
