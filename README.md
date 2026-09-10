@@ -2,12 +2,12 @@
 
 Gparatype is an architecture-aware bioinformatics framework for genome-based interpretation of serovar-associated capsule architectures in *Glaesserella parasuis*.
 
-**Research designation:** Gparatype **0.2.1-research**  
+**Research designation:** Gparatype **0.2.1**  
 **Software package version:** `0.2.1`  
 **Default database:** `GparatypeDB-2026.1-freeze`  
 **Phase 5F decision:** `PROMISING_BUT_NEEDS_REFINEMENT`
 
-> **Gparatype v0.2.1-research is a research-use prototype and has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.**
+> **Gparatype v0.2.1 is a research-use prototype and has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.**
 
 See also: [docs/LIMITATIONS.md](docs/LIMITATIONS.md), [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md), [docs/DATABASE.md](docs/DATABASE.md), [docs/PUBLIC_RELEASE_CHECKLIST.md](docs/PUBLIC_RELEASE_CHECKLIST.md), [docs/LICENSE_DECISION_REQUIRED.md](docs/LICENSE_DECISION_REQUIRED.md), [examples/README.md](examples/README.md).
 
