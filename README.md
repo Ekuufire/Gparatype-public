@@ -136,7 +136,7 @@ gparatype \
 
 For routine use, the shorter command is recommended.
 
-Engine selection
+### Engine selection
 
 **Gparatype v0.2.1** is the default and recommended engine for the current public release.
 
@@ -151,7 +151,7 @@ gparatype \
   --output-dir results/example_run
 ```
 
-### Engine selection
+Engine selection
 ```bash
 gparatype \
   --input <assembly.fasta> \
