@@ -20,7 +20,7 @@ preferred-citation:
   type: software
   title: "Gparatype (0.2.1-research) — research freeze"
   authors:
-    - name: "Gparatype project"
+    - name: "Emmanuel Kuufire"
   version: 0.2.1-research
   notes: >-
     Manuscript in preparation. No DOI assigned. Cite this research-freeze
