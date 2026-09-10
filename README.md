@@ -143,17 +143,19 @@ Previous engines are retained for reproducibility of earlier analyses.
 v0.2.1 — Hybrid engine
 
 Default:
-
+```bash
 gparatype \
   --input <assembly.fasta> \
   --output-dir results/example_run
+```
 
 Explicit selection:
-
+```bash
 gparatype \
   --input <assembly.fasta> \
   --engine 0.2.1 \
   --output-dir results/example_run
+  ```
 v0.2 — Phase 5A
 
 The v0.2 engine is retained as a frozen legacy workflow:
