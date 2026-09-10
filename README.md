@@ -13,7 +13,7 @@ See also: [docs/LIMITATIONS.md](docs/LIMITATIONS.md), [docs/REPRODUCIBILITY.md](
 
 ## Overview
 
-Gparatype interprets **whole-genome assembly FASTA** (nucleotide contigs or scaffolds) of *G. parasuis* against curated Howell capsule-locus references. Input must be **FASTA, not FASTQ**. The biological typing unit is a **serovar-associated genomic capsule architecture** — a computational interpretation of capsule-locus evidence — and is **not** automatically equivalent to phenotypic serovar identity.
+Gparatype interprets **whole-genome assembly FASTA** (nucleotide contigs or scaffolds) of *G. parasuis* against curated Howell capsule-locus references. Input must be **FASTA, not FASTQ**. The biological typing unit is a **serovar-associated genomic capsule architecture**, a computational interpretation of capsule-locus evidence and is **not** automatically equivalent to phenotypic serovar identity.
 
 The default CLI engine is the **hybrid 0.2.1** research prototype. It integrates diagnostic-region evidence, capsule gene content, local architecture (order / neighborhood), competing-serovar context, and assembly completeness signals. Conservative result states prefer ambiguity (`AMBIGUOUS_ARCHITECTURE`, `ASSEMBLY_LIMITED`) over unsupported numbered calls.
 
