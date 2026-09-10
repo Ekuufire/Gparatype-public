@@ -1,28 +1,40 @@
 cff-version: 1.2.0
 message: "If you use this software, please cite it as below."
-title: Gparatype
-version: 0.2.1-research
+
+title: "Gparatype"
+version: "0.2.1"
 date-released: "2026-08-15"
 type: software
+
 abstract: >-
   Architecture-aware in silico capsule typing research prototype for
-  Glaesserella parasuis (hybrid engine 0.2.1; GparatypeDB-2026.1-freeze).
-  Research freeze only; not externally validated; not for clinical use.
+  Glaesserella parasuis, integrating capsule gene content, genomic
+  architecture, and diagnostic-region evidence for serovar assignment.
+  This release represents a research freeze and has not been externally
+  validated. It is not intended for clinical or diagnostic use.
+
 authors:
   - name: "Emmanuel Kuufire"
+  - name: "Kingsley Emmanuel Bentum"
+  - name: "Emmanuel Piiru"
+
 keywords:
   - Glaesserella parasuis
   - capsule locus
   - serovar
   - genomic typing
-  - research prototype
+  - capsule typing
+  - research software
+
 preferred-citation:
   type: software
-  title: "Gparatype (0.2.1-research) — research freeze"
+  title: "Gparatype 0.2.1"
   authors:
-    - name: "Emmanuel Kuufire, Kingsley Emmanuel Bentum , Emmanuel Piiru"
-  version: 0.2.1-research
+    - name: "Emmanuel Kuufire"
+    - name: "Kingsley Emmanuel Bentum"
+    - name: "Emmanuel Piiru"
+  version: "0.2.1"
   notes: >-
-    Manuscript in preparation. No DOI assigned. Cite this research-freeze
-    software version and database GparatypeDB-2026.1-freeze when referring
-    to the frozen prototype.
+    Manuscript in preparation. No DOI assigned. Cite this software version
+    and the associated GparatypeDB-2026.1-freeze database when referring
+    to this research release.
