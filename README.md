@@ -169,7 +169,7 @@ Gparatype can also be invoked as a Python module:
 python -m gparatype
 ```
 
-The installed gparatype command is the recommended interface for normal use.
+The installed `gparatype` command is the recommended interface for normal use.
 
 ### Command-line options
 
