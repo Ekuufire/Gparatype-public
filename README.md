@@ -117,6 +117,7 @@ gparatype --version
 ```
 
 Run Gparatype on a whole-genome assembly:
+
 ```bash
 gparatype \
   --input <assembly.fasta> \
@@ -150,14 +151,14 @@ gparatype \
   --output-dir results/example_run
 ```
 
-Explicit selection:
+### Engine selection
 ```bash
 gparatype \
   --input <assembly.fasta> \
   --engine 0.2.1 \
   --output-dir results/example_run
   ```
-v0.2 — Phase 5A
+#### v0.2 — Phase 5A
 
 The v0.2 engine is retained as a frozen legacy workflow:
 ```bash
@@ -166,7 +167,7 @@ gparatype \
   --engine 0.2 \
   --output-dir results/phase5a_example
 ```
-v0.1.1 — Baseline
+#### v0.1.1 — Baseline
 
 The v0.1.1 baseline engine is retained for reproducibility:
 ```bash
@@ -178,8 +179,7 @@ gparatype \
 
 Legacy engines should generally be used when reproducing or comparing earlier analyses rather than for new routine analyses.
 
-Python module invocation
-
+### Python module invocation
 Gparatype can also be invoked as a Python module:
 ```bash
 python -m gparatype
