@@ -123,7 +123,7 @@ gparatype \
   --output-dir results/example_run
 ```
 
-The command above uses the Gparatype v0.2.1 hybrid engine by default. The --engine option is therefore not required for the standard workflow.
+The command above uses the **Gparatype v0.2.1** hybrid engine by default. The --engine option is therefore not required for the standard workflow.
 
 The equivalent explicit command is:
 ```bash
@@ -137,11 +137,11 @@ For routine use, the shorter command is recommended.
 
 Engine selection
 
-Gparatype v0.2.1 is the default and recommended engine for the current public release.
+**Gparatype v0.2.1** is the default and recommended engine for the current public release.
 
 Previous engines are retained for reproducibility of earlier analyses.
 
-v0.2.1 — Hybrid engine
+**v0.2.1 — Hybrid engine**
 
 Default:
 ```bash
