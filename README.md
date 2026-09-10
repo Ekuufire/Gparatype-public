@@ -123,11 +123,63 @@ gparatype \
   --output-dir results/example_run
 ```
 
-The same interface is available through:
+The command above uses the Gparatype v0.2.1 hybrid engine by default. The --engine option is therefore not required for the standard workflow.
 
-```bash
+The equivalent explicit command is:
+
+gparatype \
+  --input <assembly.fasta> \
+  --engine 0.2.1 \
+  --output-dir results/example_run
+
+For routine use, the shorter command is recommended.
+
+Engine selection
+
+Gparatype v0.2.1 is the default and recommended engine for the current public release.
+
+Previous engines are retained for reproducibility of earlier analyses.
+
+v0.2.1 — Hybrid engine
+
+Default:
+
+gparatype \
+  --input <assembly.fasta> \
+  --output-dir results/example_run
+
+Explicit selection:
+
+gparatype \
+  --input <assembly.fasta> \
+  --engine 0.2.1 \
+  --output-dir results/example_run
+v0.2 — Phase 5A
+
+The v0.2 engine is retained as a frozen legacy workflow:
+
+gparatype \
+  --input <assembly.fasta> \
+  --engine 0.2 \
+  --output-dir results/phase5a_example
+v0.1.1 — Baseline
+
+The v0.1.1 baseline engine is retained for reproducibility:
+
+gparatype \
+  --input <assembly.fasta> \
+  --engine 0.1.1 \
+  --output-dir results/baseline_example
+
+Legacy engines should generally be used when reproducing or comparing earlier analyses rather than for new routine analyses.
+
+Python module invocation
+
+Gparatype can also be invoked as a Python module:
+
 python -m gparatype
-```
+
+The installed gparatype command is the recommended interface for normal use.
 
 ### Command-line options
 
