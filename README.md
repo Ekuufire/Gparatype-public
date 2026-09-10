@@ -2,8 +2,9 @@
 
 **Architecture-aware genomic interpretation of capsule-associated diversity in *Glaesserella parasuis***
 
-**Research prototype:** Gparatype v0.2.1
-**Software package version:** `0.2.1`(hybrid; default)
+**Research prototype:** Gparatype v0.2.1  
+**Software package version:** `0.2.1`  
+**Default engine:** `0.2.1` (hybrid)  
 **Default database:** `GparatypeDB-2026.1-freeze`
 
 > **Research-use notice:** Gparatype v0.2.1 is a research-use prototype and has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.
@@ -116,7 +117,6 @@ gparatype --version
 ```
 
 Run Gparatype on a whole-genome assembly:
-
 ```bash
 gparatype \
   --input <assembly.fasta> \
