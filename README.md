@@ -120,7 +120,6 @@ Run Gparatype on a whole-genome assembly:
 ```bash
 gparatype \
   --input <assembly.fasta> \
-  --engine 0.2.1 \
   --output-dir results/example_run
 ```
 
