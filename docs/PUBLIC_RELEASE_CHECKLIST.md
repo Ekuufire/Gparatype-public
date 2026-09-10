@@ -1,4 +1,4 @@
-# Public release checklist (Gparatype 0.2.1-research)
+# Public release checklist (Gparatype 0.2.1)
 
 Public distribution packaging checklist. **Do not** push or configure remotes
 until human approval.
