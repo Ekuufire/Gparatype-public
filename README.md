@@ -60,15 +60,6 @@ Clone the repository and install from the checkout root:
 git clone https://github.com/Ekuufire/Gparatype-public.git
 cd Gparatype-public
 
-pip install ".[dev]"
-```
-
-For development:
-
-```bash
-pip install -e ".[dev]"
-```
-
 The standard package installation includes the bundled research database:
 
 ```text
