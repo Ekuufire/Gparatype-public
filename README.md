@@ -345,8 +345,6 @@ Gparatype-public/
 
 ## Status
 
-**Gparatype v0.2.1 is a research prototype under continued development and evaluation.**
+**Gparatype v0.2.1 is a research prototype under active evaluation.**
 
-The current release provides an architecture-aware computational framework for interpreting capsule-associated genomic diversity in *Glaesserella parasuis*, while explicitly reporting unresolved and technically limited cases.
-
-Independent validation and further refinement are required before the framework can be considered for diagnostic or clinical use.
+The current release provides an architecture-aware framework for interpreting capsule-associated genomic diversity in *Glaesserella parasuis*. Independent validation is required to establish performance beyond the current development setting.
