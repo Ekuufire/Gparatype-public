@@ -1,93 +1,193 @@
-# Examples (public distribution)
+# Gparatype Worked Examples
 
-This directory documents **how to invoke** Gparatype. It does **not** redistribute
-whole-genome assemblies with unclear redistribution rights.
+This directory provides worked examples demonstrating how to run and interpret **Gparatype v0.2.1**.
 
-## Input requirements
+Gparatype reports **serovar-associated genomic capsule architectures**. These interpretations are based on genomic evidence and should not automatically be considered equivalent to phenotypic serovar identity.
 
-- **Whole-genome assembly FASTA** (`.fasta`, `.fa`, `.fna`) — **not FASTQ**
-- Single isolate / sample per run
-- Reasonably contiguous assembly preferred; fragmented loci may yield `ASSEMBLY_LIMITED`
+> **Research-use notice:** Gparatype v0.2.1 is a research prototype and has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.
 
-## Recommended command (engine 0.2.1)
+---
 
-Default database is the bundled freeze DB; `--database` is optional:
+## Example 1: Shared serovar 5/12-associated capsule architecture
 
-```bash
-gparatype --input <assembly.fasta> \
-  --engine 0.2.1 \
-  --output-dir results/example_run
-```
+### Genome
 
-Flags:
+- **Organism:** *Glaesserella parasuis*
+- **Strain:** KL0318
+- **NCBI nucleotide accession:** `CP009237.1`
+- **Gparatype engine:** `0.2.1`
+- **Database:** `GparatypeDB-2026.1-freeze`
 
-- `--input` / `-i` — **required**
-- `--engine` — default `0.2.1`; legacy `0.2` / `0.1.1` for reproducibility only
-- `--database` — override path (default: `data/gparatype_db/GparatypeDB-2026.1-freeze`)
-- `--output-dir` / `-o` — output directory
-- `--reported-serovar` — metadata for reporting only; **must not** influence prediction
+This example demonstrates how Gparatype handles a genome with strong evidence for the shared serovar 5/12-associated capsule architecture.
 
-Also: `python -m gparatype` with the same arguments.
+### Run Gparatype
 
-## Obtaining a public assembly (accession-based)
-
-No redistributable validation genome is bundled. To run on a public record:
-
-1. Download a *G. parasuis* assembly from NCBI Assembly or Datasets CLI using a
-   public accession (e.g. search NCBI for *Glaesserella parasuis* complete or
-   draft genomes with explicit redistribution terms).
-2. Run Gparatype on the downloaded FASTA.
-
-**Do not fabricate an expected serovar** unless you have independent metadata
-(serology, publication label, or curated validation record). Report the engine
-`final_state` and interpretation text without claiming external validation.
-
-Example shape (replace paths and accession):
+After obtaining the corresponding genome assembly in FASTA format, run:
 
 ```bash
-# Illustrative — download step depends on your NCBI tooling
-datasets download genome accession GCF_XXXXXX.X --filename isolate.fna.gz
-gzip -dc isolate.fna.gz > isolate.fasta
-
-gparatype --input isolate.fasta \
-  --engine 0.2.1 \
-  --output-dir results/ncbi_example
+gparatype \
+  --input CP009237.1.fasta \
+  --output-dir results/KL0318
 ```
 
-Inspect `<sample>.gparatype_v02.txt` and `summary.tsv` for result state and warnings.
-
-## SOFTWARE_UNIT_TEST_ONLY — BLAST plumbing
-
-To confirm CLI / BLAST wiring without a typing cohort genome, you may use a
-**single CDS record** extracted from the bundled database FASTA as a toy subject.
-This is **not** biological validation and **not** interpretable serovar typing:
-
-```bash
-# Extract one header/sequence from bundled reference (example gene accession KC795327.1)
-grep -A1 'KC795327.1' data/gparatype_db/GparatypeDB-2026.1-freeze/howell_cds_all.fasta \
-  | head -2 > /tmp/toy_cds.fasta
-
-gparatype --input /tmp/toy_cds.fasta \
-  --engine 0.2.1 \
-  --output-dir results/software_only
-```
-
-Label such runs: **SOFTWARE_UNIT_TEST_ONLY**.
-
-## Output files (engine 0.2.1)
-
-| File | Description |
-|---|---|
-| `<sample>.gparatype_v02.txt` | Text report: `final_state`, architecture, interpretation |
-| `<sample>.gparatype_v02.json` | JSON payload |
-| `summary.tsv` | One-row summary |
-| `architecture_evidence.tsv` | Architecture evidence table |
-| `component_evidence.tsv` | Component evidence table |
-
-Console line shape (values depend on input):
+### Expected result
 
 ```text
-<final_state>	primary=<serovar_or_->	<interpretation text>
+final_state:          SEROVAR_5_OR_12
+primary_architecture: 5_OR_12
+competing_serovars:   5,12
+species_status:       SPECIES_OK
+capsule_detected:     True
 ```
 
-Possible `final_state` values: see `V02_RESULT_STATES` in `src/gparatype/__init__.py`.
+### Architecture evidence
+
+| Evidence | Serovar 5 | Serovar 12 |
+|---|---:|---:|
+| Architecture recovery | 1.000 | 1.000 |
+| Gene content | STRONG | STRONG |
+| Sequence evidence | STRONG | STRONG |
+| Gene order | STRONG | STRONG |
+| Adjacency | STRONG | STRONG |
+| Diagnostic evidence | STRONG | STRONG |
+| Completeness | STRONG | STRONG |
+| Components detected | 14/14 | 14/14 |
+
+Both serovar-associated reference architectures show complete recovery and strong genomic support.
+
+### Interpretation
+
+Despite the strength and completeness of the capsule-locus evidence, Gparatype does not force an individual serovar 5 or serovar 12 assignment.
+
+Instead, it reports:
+
+```text
+SEROVAR_5_OR_12
+```
+
+This illustrates an important design principle of Gparatype:
+
+> **When the available genomic evidence does not support a more specific interpretation, Gparatype reports the unresolved state rather than forcing an unsupported numbered assignment.**
+
+The result represents a genomic capsule-architecture interpretation and should not be considered confirmation of phenotypic serovar identity.
+
+---
+
+## Example 2: Ambiguous architecture with competing genomic evidence
+
+### Genome
+
+- **Organism:** *Glaesserella parasuis*
+- **Strain:** SC1401
+- **NCBI nucleotide accession:** `CP015099.1`
+- **Gparatype engine:** `0.2.1`
+- **Database:** `GparatypeDB-2026.1-freeze`
+
+This example demonstrates how Gparatype handles a genome for which a leading capsule architecture is accompanied by substantial competing genomic evidence.
+
+### Run Gparatype
+
+```bash
+gparatype \
+  --input CP015099.1.fasta \
+  --output-dir results/SC1401
+```
+
+### Expected result
+
+```text
+final_state:          AMBIGUOUS_ARCHITECTURE
+primary_architecture:
+competing_serovars:   11,1
+species_status:       SPECIES_OK
+capsule_detected:     True
+```
+
+### Architecture evidence
+
+| Evidence | Serovar 11 | Serovar 1 |
+|---|---:|---:|
+| Architecture recovery | 1.000 | 0.833 |
+| Gene content | STRONG | STRONG |
+| Sequence evidence | STRONG | STRONG |
+| Gene order | STRONG | STRONG |
+| Adjacency | STRONG | STRONG |
+| Diagnostic evidence | STRONG | STRONG |
+| Completeness | STRONG | STRONG |
+| Components detected | 20/20 | 15/18 |
+
+The serovar 11-associated architecture shows complete recovery, but substantial competing serovar 1-associated evidence is also present.
+
+Under the current Gparatype v0.2.1 hybrid interpretation rules, the result is therefore:
+
+```text
+AMBIGUOUS_ARCHITECTURE
+```
+
+rather than a forced numbered assignment.
+
+### Interpretation
+
+This example demonstrates that architecture recovery alone does not determine the final Gparatype result.
+
+Gparatype considers the broader genomic evidence, including competing architectures, before producing the final interpretation. When the evidence does not support a sufficiently specific assignment under the current rules, an ambiguity state is reported.
+
+---
+
+## Understanding the output files
+
+Each Gparatype analysis generates several complementary output files:
+
+| Output file | Description |
+|---|---|
+| `summary.tsv` | Compact summary of the final interpretation |
+| `*.gparatype_v02.txt` | Human-readable analysis report |
+| `*.gparatype_v02.json` | Machine-readable complete result |
+| `architecture_evidence.tsv` | Evidence for each candidate capsule architecture |
+| `component_evidence.tsv` | Component-level evidence underlying the architecture analysis |
+
+For routine interpretation, users should begin with the human-readable report or `summary.tsv`.
+
+The architecture and component evidence files provide additional detail when investigating supported, competing, atypical, or unresolved architectures.
+
+---
+
+## Interpreting Gparatype results
+
+Gparatype reports **serovar-associated genomic capsule architectures**, not validated phenotypic serovar assignments.
+
+For example:
+
+- `SUPPORTED_SEROVAR_ASSOCIATED_ARCHITECTURE` indicates that genomic evidence supports a recognized serovar-associated capsule architecture under the current Gparatype rules.
+
+- `SEROVAR_5_OR_12` indicates support for the shared 5/12-associated genomic state without sufficient basis for separating serovar 5 from serovar 12.
+
+- `AMBIGUOUS_ARCHITECTURE` indicates that the available genomic evidence does not support a sufficiently specific architecture assignment under the current rules.
+
+These states are intentionally designed to distinguish supported interpretations from biologically unresolved or conflicting genomic evidence.
+
+---
+
+## Reproducibility
+
+These examples were generated using:
+
+```text
+Software version: 0.2.1
+Engine:           0.2.1
+Database:         GparatypeDB-2026.1-freeze
+```
+
+For reproducible analyses, record the software version, engine version, database version, and input genome accession.
+
+Results obtained using different software or database versions may differ.
+
+---
+
+## Research-use limitation
+
+Gparatype v0.2.1 is intended for research into capsule-associated genomic diversity in *Glaesserella parasuis*.
+
+The software has undergone internal development evaluation but has not yet undergone independent external or clinical validation.
+
+These worked examples demonstrate software behavior and should not be interpreted as estimates of diagnostic or clinical performance.
