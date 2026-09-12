@@ -57,7 +57,7 @@ This conservative behavior is intentional: **uncertain genomic evidence is repor
 Clone the repository and install from the checkout root:
 
 ```bash
-git clone <repo-url> Gparatype-public
+git clone https://github.com/Ekuufire/Gparatype-public.git
 cd Gparatype-public
 
 pip install ".[dev]"
