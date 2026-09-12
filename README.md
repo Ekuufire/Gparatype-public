@@ -249,8 +249,6 @@ Gparatype v0.2.1 has undergone **internal development evaluation** but has **not
 
 Current validation status:
 
-* **External validation:** Not performed
-* **Clinical validation:** Not performed
 * **Development evaluation:** Internal comparison using a clean evaluation subset (`n=315`)
 * **Development cohort:** Contains data associated with framework development and should therefore not be interpreted as an independent benchmark
 
