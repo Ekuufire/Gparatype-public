@@ -311,11 +311,9 @@ Once a manuscript or archival software release receives a DOI, the citation info
 
 ## License
 
-The license for the public software release is currently **under consideration**.
+Gparatype is released under the MIT License.
 
-No `LICENSE` file is included in this release until the appropriate licensing decision has been finalized.
-
-See [docs/LICENSE_DECISION_REQUIRED.md](docs/LICENSE_DECISION_REQUIRED.md).
+See the `LICENSE` file for the full license text.
 
 ---
 
