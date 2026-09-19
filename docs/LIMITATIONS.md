@@ -3,8 +3,6 @@
 Honest constraints for the research freeze. Read with
 [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
-# Scientific Limitations
-
 ## Gparatype 0.2.1
 
 Gparatype is a research prototype for architecture-aware genomic interpretation of *Glaesserella parasuis* capsule-associated loci. The following limitations should be considered when interpreting results.
