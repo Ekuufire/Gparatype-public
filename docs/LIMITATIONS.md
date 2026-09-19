@@ -3,86 +3,56 @@
 Honest constraints for the research freeze. Read with
 [REPRODUCIBILITY.md](REPRODUCIBILITY.md).
 
-## 1. No independent external validation
+# Scientific Limitations
 
-`EXTERNAL_VALIDATION=NOT_PERFORMED`. Phase 5F is an
-**INTERNAL_DEVELOPMENT_COMPARISON** only. Do not present concordance metrics
-as independent external validation.
+## Gparatype 0.2.1
 
-## 2. Discovery contamination of the development cohort
+Gparatype is a research prototype for architecture-aware genomic interpretation of *Glaesserella parasuis* capsule-associated loci. The following limitations should be considered when interpreting results.
 
-The development / discovery cohort used across Phase 4–5 analyses is
-**discovery-contaminated** (`DEVELOPMENT_COHORT=DISCOVERY_CONTAMINATED`).
-Historically described as a ~336-genome development set; the Phase 5F CORR1
-paired benchmark used **n_all=322** / **n_clean=315**. Discovery and evaluation
-overlap means optimistic bias is possible.
+## 1. Research and Validation Status
 
-## 3. Phase 5F internal comparison metrics (CLEAN n=315)
+Gparatype 0.2.1 has **not undergone independent external or clinical validation**. The current release is intended for research and methodological development.
 
-Frozen internal benchmark (stratum `CLEAN_EXCL_CONFLICTS`):
+Results should not be considered validated diagnostic results.
 
-| Engine | Compatible concordance | False numbered-call rate | Informative call rate |
-|---|---|---|---|
-| 0.1.1 | 62.9% (0.6286) | 14.6% (0.1463) | 74.3% (0.7429) |
-| 0.2.0 | 63.5% (0.6349) | 6.8% (0.0684) | 73.3% (0.7333) |
-| 0.2.1 hybrid | 60.6% (0.6063) | 4.5% (0.0455) | 68.9% (0.6889) |
+## 2. Genome Assembly Quality
 
-CLEAN ambiguous rate under 0.2.1 ≈ 29.5% (vs ≈ 24.4% under 0.2.0).
+Gparatype operates on genome assemblies and is dependent on the quality and completeness of the input sequence.
 
-**Conservatism explanation:** Relative to 0.2.0, the hybrid engine **reduced
-unsupported / false numbered calls** (safety gain) but also **increased
-ambiguous calls** and **reduced informative call rate**, with a modest drop in
-compatible concordance. This trade-off is intentional: prefer
-`AMBIGUOUS_ARCHITECTURE` / abstention over incorrect numbered architecture
-calls. Decision recorded: **`PROMISING_BUT_NEEDS_REFINEMENT`**.
+Fragmented assemblies, contig-edge effects, unresolved regions, or incomplete capsule-associated loci may limit interpretation. The software may therefore report `ASSEMBLY_LIMITED` or `AMBIGUOUS_ARCHITECTURE` rather than making an unsupported numbered call.
 
-These numbers are **not** independent external validation.
+## 3. Genomic Interpretation Is Not Phenotypic Serotyping
 
-## 4. Heterogeneous metadata provenance
+Gparatype reports **serovar-associated genomic capsule architecture**. This is not equivalent to classical serological typing or other phenotypic serotyping methods.
 
-Reported serovars span experimental serology, molecular typing, publication
-labels, NCBI attributes, and computational predictions of unequal strength.
-Metadata must never be treated as hidden prediction features.
+Differences between genomic interpretation and historical or experimental serovar labels may occur.
 
-## 5. Limited independent references for difficult serovars
+## 4. Unresolved Serovar Groups
 
-Phase 5D.1 found little new independent Tier-B field reference support for
-several hard groups (notably 2 / 6 / 8 / 10 / 11 beyond canonical anchors and
-already-used discovery-linked material). Signature readiness remains limited
-for several serovars (`READY_WITH_LIMITATIONS` / `MORE_BIOLOGY_REQUIRED`).
+Some serovar groups cannot currently be resolved with sufficient genomic evidence.
 
-## 6. Unresolved 2 / 8 / 10 biology
+In particular, serovars **5 and 12** are reported as:
 
-Serovars **2, 8, and 10** remain biologically unresolved at population scale.
-The hybrid prototype prefers `AMBIGUOUS_ARCHITECTURE` rather than forced
-numbered calls (`MORE_BIOLOGY` policy).
+`SEROVAR_5_OR_12`
 
-## 7. Combined 5 / 12 interpretation
+when the available evidence supports the combined interpretation. The current release does not independently distinguish serovar 5 from serovar 12.
 
-Serovars **5 and 12** share the Howell `wcwK` target context and are emitted
-only as the combined state **`SEROVAR_5_OR_12`**. They are not separated.
-Phase 5F confirmed no lone split of 5 vs 12 under engine 0.2.1.
+Additional reference genomes and biological characterization are needed to further resolve difficult serovar groups.
 
-## 8. Assembly fragmentation / quality dependence
+## 5. Conservative Classification
 
-Contig-edge and split-locus effects can hide genes or truncate Region-2
-modules. The engine prefers **`ASSEMBLY_LIMITED`** over claiming biological
-absence when assembly quality limits interpretation.
+Gparatype is designed to avoid unsupported numbered calls when genomic evidence is incomplete or conflicting.
 
-## 9. Genomic capsule interpretation ≠ phenotypic serotyping
+Consequently, an ambiguous result does not necessarily indicate a software failure. Users should not manually convert `AMBIGUOUS_ARCHITECTURE` or `ASSEMBLY_LIMITED` results into a numbered serovar without additional supporting evidence.
 
-Gparatype reports **serovar-associated genomic capsule architecture**. This is
-not equivalent to classical serological typing, mPCR clinical calls, or
-automatic override of historical labels. Not intended as a standalone
-veterinary diagnostic for now.
+## 6. Not for Clinical or Regulatory Use
 
-## 10. Conservative ambiguous / assembly-limited states
+Gparatype 0.2.1 is provided for **research and methodological development only**.
 
-Increased ambiguity under the hybrid prototype is a documented safety behavior,
-not a hidden failure mode to be optimized away on the discovery cohort.
+It has not been validated for clinical diagnosis, veterinary diagnostic decision-making, regulatory testing, treatment decisions, or outbreak confirmation.
 
-## 11. Research-only status
+Gparatype should not be used as a standalone diagnostic method.
 
-`CLINICAL_VALIDATION=NO`. Software version **`0.2.1`** with research label
-**0.2.1-research**. Not for diagnosis, clinical decision-making, or regulatory
-use. Phase decision: **`PROMISING_BUT_NEEDS_REFINEMENT`**.
+---
+
+**Future validation:** Independent evaluation using additional, geographically diverse, and independently characterized isolates will be important for assessing the generalizability and performance of future releases.
