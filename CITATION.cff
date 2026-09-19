@@ -15,11 +15,14 @@ abstract: >-
   validated. It is not intended for clinical or diagnostic use.
 
 authors:
-  - name: "Emmanuel Kuufire"
-  - name: "Kingsley Emmanuel Bentum"
-  - name: "Emmanuel Dongbataazie Piiru"
-  - name: "Temesgen Samuel"
-  - name: "Woubit Abebe"
+  - family-names: "Kuufire"
+    given-names: "Emmanuel"
+  - family-names: "Bentum"
+    given-names: "Kingsley Emmanuel"
+  - family-names: "Piiru"
+    given-names: "Emmanuel Dongbataazie"
+  - family-names: "Abebe"
+    given-names: "Woubit"
 
 keywords:
   - "Glaesserella parasuis"
@@ -32,13 +35,16 @@ keywords:
 preferred-citation:
   type: software
   title: "Gparatype 0.2.1"
-  authors:
-    - name: "Emmanuel Kuufire"
-    - name: "Kingsley Emmanuel Bentum"
-    - name: "Emmanuel Dongbataazie Piiru"
-    - name: "Temesgen Samuel"
-    - name: "Woubit Abebe"
   version: "0.2.1"
+  authors:
+    - family-names: "Kuufire"
+      given-names: "Emmanuel"
+    - family-names: "Bentum"
+      given-names: "Kingsley Emmanuel"
+    - family-names: "Piiru"
+      given-names: "Emmanuel Dongbataazie"
+    - family-names: "Abebe"
+      given-names: "Woubit"
   notes: >-
     Manuscript in preparation. No DOI assigned. Cite this software version
     and the associated GparatypeDB-2026.1-freeze database when referring
