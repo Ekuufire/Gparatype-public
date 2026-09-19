@@ -18,6 +18,7 @@ authors:
   - name: "Emmanuel Kuufire"
   - name: "Kingsley Emmanuel Bentum"
   - name: "Emmanuel Dongbataazie Piiru"
+  - name: "Temesgen Samuel"
   - name: "Woubit Abebe"
 
 keywords:
@@ -35,6 +36,7 @@ preferred-citation:
     - name: "Emmanuel Kuufire"
     - name: "Kingsley Emmanuel Bentum"
     - name: "Emmanuel Dongbataazie Piiru"
+    - name: "Temesgen Samuel"
     - name: "Woubit Abebe"
   version: "0.2.1"
   notes: >-
