@@ -1,3 +1,4 @@
+```toml
 [build-system]
 requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
@@ -5,14 +6,55 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gparatype"
 version = "0.2.1"
-description = "Architecture-aware research prototype for Glaesserella parasuis capsule/serovar genomic interpretation"
+description = "Architecture-aware research prototype for Glaesserella parasuis capsule and serovar genomic interpretation"
 readme = "README.md"
 requires-python = ">=3.9"
-authors = [{ name = "Gparatype project" }]
+license = { file = "LICENSE" }
+
+authors = [
+    { name = "Emmanuel Kuufire" },
+    { name = "Kingsley Emmanuel Bentum" },
+    { name = "Emmanuel Dongbataazie Piiru" },
+    { name = "Temesgen Samuel" },
+    { name = "Woubit Abebe" }
+]
+
+keywords = [
+    "Glaesserella parasuis",
+    "capsule typing",
+    "serovar",
+    "genomic typing",
+    "bioinformatics",
+    "genomics"
+]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+
 dependencies = []
 
+[project.urls]
+Homepage = "https://github.com/Ekuufire/Gparatype-public"
+Repository = "https://github.com/Ekuufire/Gparatype-public"
+Issues = "https://github.com/Ekuufire/Gparatype-public/issues"
+
 [project.optional-dependencies]
-dev = ["pytest>=7.0"]
+dev = [
+    "pytest>=7.0",
+    "build>=1.0",
+    "twine>=5.0"
+]
 
 [project.scripts]
 gparatype = "gparatype.cli:main"
@@ -21,8 +63,11 @@ gparatype = "gparatype.cli:main"
 where = ["src"]
 
 [tool.setuptools.package-data]
-gparatype = ["data/GparatypeDB-2026.1-freeze/*"]
+gparatype = [
+    "data/GparatypeDB-2026.1-freeze/*"
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+```
