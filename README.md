@@ -295,6 +295,40 @@ Important limitations include incomplete resolution of certain serovar groups, p
 
 See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) for the complete limitations statement.
 
+## References
+
+The biological reference framework used by Gparatype builds upon published
+characterization of the capsular polysaccharide biosynthesis loci and
+molecular serotyping of *Glaesserella parasuis* (formerly *Haemophilus parasuis*).
+
+1. Howell KJ, Weinert LA, Luan S-L, et al. Gene content and diversity of
+   the loci encoding biosynthesis of capsular polysaccharides of the
+   15 serovar reference strains of *Haemophilus parasuis*.
+   *Journal of Bacteriology*. 2013;195(18):4264–4273.
+   doi:10.1128/JB.00471-13.
+
+2. Howell KJ, Peters SE, Wang J, et al. Development of a multiplex PCR
+   assay for rapid molecular serotyping of *Haemophilus parasuis*.
+   *Journal of Clinical Microbiology*. 2015;53(12):3812–3821.
+   doi:10.1128/JCM.01991-15.
+
+---
+
+## Contributors
+
+Gparatype was developed and is maintained by **Emmanuel Kuufire**.
+
+Scientific, technical, advisory, and other contributions are acknowledged in
+[CONTRIBUTORS.md](CONTRIBUTORS.md).
+
+---
+
+## License
+
+Gparatype is released under the MIT License.
+
+See the `LICENSE` file for the full license text.
+
 ---
 
 ## Citation
