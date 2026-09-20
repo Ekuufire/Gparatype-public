@@ -7,18 +7,6 @@ version: "0.2.1"
 date-released: "2026-08-15"
 type: software
 
-authors:
-  - family-names: "Kuufire"
-    given-names: "Emmanuel"
-  - family-names: "Bentum"
-    given-names: "Kingsley Emmanuel"
-  - family-names: "Piiru"
-    given-names: "Emmanuel Dongbataazie"
-  - family-names: "Samuel"
-    given-names: "Temesgen"
-  - family-names: "Abebe"
-    given-names: "Woubit"
-
 abstract: >-
   Architecture-aware in silico capsule typing research prototype for
   Glaesserella parasuis, integrating capsule gene content, genomic
@@ -26,46 +14,29 @@ abstract: >-
   This release represents a research freeze and has not been externally
   validated. It is not intended for clinical or diagnostic use.
 
+authors:
+  - name: "Emmanuel Kuufire"
+  - name: "Kingsley Emmanuel Bentum"
+  - name: "Emmanuel Piiru"
+
 keywords:
-  - "Glaesserella parasuis"
-  - "capsule locus"
-  - "serovar"
-  - "genomic typing"
-  - "capsule typing"
-  - "research software"
+  - Glaesserella parasuis
+  - capsule locus
+  - serovar
+  - genomic typing
+  - capsule typing
+  - research software
 
-repository-code: "https://github.com/Ekuufire/Gparatype-public"
+preferred-citation:
+  type: software
+  title: "Gparatype 0.2.1"
+  authors:
+    - name: "Emmanuel Kuufire"
+    - name: "Kingsley Emmanuel Bentum"
+    - name: "Emmanuel Dongbataazie Piiru"
+  version: "0.2.1"
+  notes: >-
+    Manuscript in preparation. No DOI assigned. Cite this software version
+    and the associated GparatypeDB-2026.1-freeze database when referring
+    to this research release.
 ```
-
-This follows the current CFF 1.2.0 structure: `version`, `date-released`, `type`, `abstract`, `keywords`, and `repository-code` are all valid optional fields.
-
-### One important thing
-
-**Don't add `preferred-citation` yet.**
-
-Not because it is invalid—it isn't—but because you don't currently have a separate paper that you want GitHub to redirect citation credit toward. The CFF documentation describes `preferred-citation` specifically as a way to redirect citation toward another work, commonly a published paper.
-
-When your Gparatype manuscript gets published, we can add that properly with the article DOI.
-
----
-
-### If `cffconvert --validate` passes but GitHub still says "Something went wrong"
-
-Then **the CFF itself is not the problem**.
-
-At that point, we should check GitHub's side—particularly that:
-
-1. `CITATION.cff` is in the **repository root**.
-2. It is on the **default branch**.
-3. The filename is exactly:
-
-   ```text
-   CITATION.cff
-   ```
-
-   not `citation.cff`, `CITATION.yml`, or `CITATION.cff.txt`.
-4. GitHub is actually seeing the latest commit.
-
-GitHub's documentation explicitly requires the citation file to be named `CITATION.cff` and placed in the repository.
-
-**So let's not change anything else yet. Run `cffconvert --validate` on the minimal version and paste the exact output here.** That will tell us precisely where the problem is instead of continuing to guess.
