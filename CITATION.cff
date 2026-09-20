@@ -1,46 +1,53 @@
-```yaml
 cff-version: 1.2.0
-message: "If you use this software, please cite it as below."
+message: "If you use Gparatype, please cite this software."
 
 title: "Gparatype"
-version: "0.2.1"
-date-released: "2026-08-15"
 type: software
-
-abstract: >-
-  Architecture-aware in silico capsule typing research prototype for
-  Glaesserella parasuis, integrating capsule gene content, genomic
-  architecture, and diagnostic-region evidence for serovar assignment.
-  This release represents a research freeze and has not been externally
-  validated. It is not intended for clinical or diagnostic use.
+version: "0.2.1"
 
 authors:
-  - name: "Emmanuel Kuufire"
-  - name: "Kingsley Emmanuel Bentum"
-  - name: "Emmanuel Dongbataazie Piiru"
-  - name: "Temesgen Samuel"
-  - name: "Woubit Abebe"
+  - family-names: "Kuufire"
+    given-names: "Emmanuel"
+  - family-names: "Bentum"
+    given-names: "Kingsley Emmanuel"
+  - family-names: "Piiru"
+    given-names: "Emmanuel Dongbataazie"
+  - family-names: "Samuel"
+    given-names: "Temesgen"
+  - family-names: "Abebe"
+    given-names: "Woubit"
+
+abstract: >-
+  Architecture-aware in silico capsule-typing research prototype for
+  Glaesserella parasuis, integrating capsule gene content, genomic
+  architecture, and diagnostic-region evidence for serovar-associated
+  genomic interpretation. Gparatype has not undergone independent external
+  validation and is not intended for standalone clinical or diagnostic use.
 
 keywords:
-  - Glaesserella parasuis
-  - capsule locus
-  - serovar
-  - genomic typing
-  - capsule typing
-  - research software
+  - "Glaesserella parasuis"
+  - "capsule locus"
+  - "serovar"
+  - "genomic typing"
+  - "capsule typing"
+  - "research software"
+
+repository-code: "https://github.com/Ekuufire/Gparatype-public"
+
+license: "MIT"
 
 preferred-citation:
   type: software
-  title: "Gparatype 0.2.1"
+  title: "Gparatype"
   authors:
-    - name: "Emmanuel Kuufire"
-    - name: "Kingsley Emmanuel Bentum"
-    - name: "Emmanuel Dongbataazie Piiru"
-    - name: "Temesgen Samuel"
-    - name: "Woubit Abebe"
+    - family-names: "Kuufire"
+      given-names: "Emmanuel"
+    - family-names: "Bentum"
+      given-names: "Kingsley Emmanuel"
+    - family-names: "Piiru"
+      given-names: "Emmanuel Dongbataazie"
+    - family-names: "Samuel"
+      given-names: "Temesgen"
+    - family-names: "Abebe"
+      given-names: "Woubit"
   version: "0.2.1"
-  notes: >-
-    Manuscript in preparation. No DOI assigned. Cite this software version
-    and the associated GparatypeDB-2026.1-freeze database when referring
-    to this research release.
-```
