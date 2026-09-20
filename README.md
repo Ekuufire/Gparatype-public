@@ -295,6 +295,20 @@ Important limitations include incomplete resolution of certain serovar groups, p
 
 See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) for the complete limitations statement.
 
+## Citation
+
+A manuscript describing Gparatype is in preparation.
+
+For software citation, please use the information provided in
+[CITATION.cff](CITATION.cff).
+
+**No DOI is currently assigned.**
+
+Once a manuscript or archival software release receives a DOI, the citation
+information will be updated accordingly.
+
+---
+
 ## References
 
 The biological reference framework used by Gparatype builds upon published
@@ -319,7 +333,7 @@ molecular serotyping of *Glaesserella parasuis* (formerly *Haemophilus parasuis*
 Gparatype was developed and is maintained by **Emmanuel Kuufire**.
 
 Scientific, technical, advisory, and other contributions are acknowledged in
-[CONTRIBUTORS.md]https://github.com/Ekuufire/Gparatype-public/commit/41846a791f3ad0c866639cd9abc9b63051bd4206.
+[CONTRIBUTORS.md](CONTRIBUTORS.md).
 
 ---
 
@@ -327,29 +341,7 @@ Scientific, technical, advisory, and other contributions are acknowledged in
 
 Gparatype is released under the MIT License.
 
-See the `LICENSE` file for the full license text.
-
----
-
-## Citation
-
-A manuscript describing Gparatype is in preparation.
-
-For software citation, please use the information provided in [CITATION.cff](CITATION.cff).
-
-**No DOI is currently assigned.**
-
-Once a manuscript or archival software release receives a DOI, the citation information will be updated accordingly.
-
----
-
-## License
-
-Gparatype is released under the MIT License.
-
-See the `LICENSE` file for the full license text.
-
----
+See the [LICENSE](LICENSE) file for the full license text.
 
 ## Project structure
 
