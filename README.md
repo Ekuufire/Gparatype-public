@@ -319,7 +319,7 @@ molecular serotyping of *Glaesserella parasuis* (formerly *Haemophilus parasuis*
 Gparatype was developed and is maintained by **Emmanuel Kuufire**.
 
 Scientific, technical, advisory, and other contributions are acknowledged in
-[CONTRIBUTORS.md](CONTRIBUTORS.md).
+[CONTRIBUTORS.md]https://github.com/Ekuufire/Gparatype-public/commit/41846a791f3ad0c866639cd9abc9b63051bd4206.
 
 ---
 
