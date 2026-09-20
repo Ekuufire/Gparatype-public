@@ -33,12 +33,5 @@ These publications are cited in the **References** section of the main
 [README](README.md).
 
 ---
-
-## Authorship Note
-
-Contributor acknowledgment in this file is separate from software authorship
-and authorship of associated scientific publications.
-
-Authorship of future Gparatype publications will be determined according to
 the contributions made to the scientific research, analysis, interpretation,
 and preparation of each manuscript.
