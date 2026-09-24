@@ -133,9 +133,23 @@ Database:         GparatypeDB-2026.1-freeze
 
 Large validation genome FASTA files are not distributed with this release. The repository contains software, the research database, documentation, examples and tests for reproducing the computational workflow when input data are independently available. For legacy-engine instructions and additional details, see [reproducibility documentation](docs/REPRODUCIBILITY.md).
 
+
 ## Citation
 
-A manuscript describing Gparatype is in preparation. Until a DOI is assigned, please use the software citation metadata in [CITATION.cff](CITATION.cff), specifying the software version and database version used. This section will be updated when an archival software release or manuscript receives a DOI.
+A manuscript describing Gparatype is in preparation. If you use
+Gparatype in your research, please cite the archived software release:
+
+Kuufire, E., Bentum, K. E., Piiru, E. D., Samuel, T., & Abebe, W.
+(2026). *Gparatype v0.2.1: Architecture-aware genomic
+interpretation of capsule-associated diversity in Glaesserella
+parasuis* (Version 0.2.1) [Computer software]. Zenodo.
+https://doi.org/10.5281/zenodo.22945649
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22945649.svg)](https://doi.org/10.5281/zenodo.22945649)
+
+For machine-readable citation metadata, see
+[CITATION.cff](CITATION.cff). Please specify the software
+version and database version used in your analysis.
 
 ## References
 
