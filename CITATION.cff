@@ -1,9 +1,12 @@
+
 cff-version: 1.2.0
 message: "If you use Gparatype, please cite this software."
 
-title: "Gparatype"
+title: "Gparatype v0.2.1: Architecture-aware genomic interpretation of capsule-associated diversity in Glaesserella parasuis"
 type: software
 version: "0.2.1"
+doi: "10.5281/zenodo.22945649"
+date-released: "2026-09-24"
 
 authors:
   - family-names: "Kuufire"
@@ -18,27 +21,31 @@ authors:
     given-names: "Woubit"
 
 abstract: >-
-  Architecture-aware in silico capsule-typing research prototype for
-  Glaesserella parasuis, integrating capsule gene content, genomic
-  architecture, and diagnostic-region evidence for serovar-associated
-  genomic interpretation. Gparatype has not undergone independent external
-  validation and is not intended for standalone clinical or diagnostic use.
+  Gparatype is an architecture-aware bioinformatics framework for
+  genome-based interpretation of serovar-associated capsule diversity
+  in Glaesserella parasuis. It integrates diagnostic-region sequence
+  evidence, capsule-associated gene content, local genomic
+  architecture and gene order, and competing-serovar evidence.
+  Version 0.2.1 includes the hybrid evidence framework and the
+  curated GparatypeDB-2026.1-freeze reference database.
+  Gparatype is a research-use prototype that has not undergone
+  independent external validation and is not intended for
+  standalone veterinary diagnostic or clinical decision-making use.
 
 keywords:
   - "Glaesserella parasuis"
-  - "capsule locus"
-  - "serovar"
-  - "genomic typing"
-  - "capsule typing"
-  - "research software"
+  - "Glässer's disease"
+  - "capsular polysaccharide"
+  - "serotyping"
+  - "comparative genomics"
+  - "swine health"
 
 repository-code: "https://github.com/Ekuufire/Gparatype-public"
-
 license: "MIT"
 
 preferred-citation:
   type: software
-  title: "Gparatype"
+  title: "Gparatype v0.2.1: Architecture-aware genomic interpretation of capsule-associated diversity in Glaesserella parasuis"
   authors:
     - family-names: "Kuufire"
       given-names: "Emmanuel"
@@ -50,4 +57,8 @@ preferred-citation:
       given-names: "Temesgen"
     - family-names: "Abebe"
       given-names: "Woubit"
+  year: 2026
   version: "0.2.1"
+  doi: "10.5281/zenodo.22945649"
+  publisher:
+    name: "Zenodo"
