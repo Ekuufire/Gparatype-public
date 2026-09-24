@@ -1,63 +1,34 @@
+
 # Gparatype
 
-**Architecture-aware genomic interpretation of capsule-associated diversity in *Glaesserella parasuis***
+**Architecture-aware genomic interpretation of capsule-associated diversity in** ***Glaesserella parasuis***
 
-**Research prototype:** Gparatype v0.2.1  
-**Software package version:** `0.2.1`  
-**Default engine:** `0.2.1` (hybrid)  
-**Default database:** `GparatypeDB-2026.1-freeze`
+**Version:** 0.2.1 · **Default engine:** 0.2.1 (hybrid) · **Database:** GparatypeDB-2026.1-freeze
 
-> **Research-use notice:** Gparatype v0.2.1 is a research-use prototype and has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.
-
-See also: [docs/LIMITATIONS.md](docs/LIMITATIONS.md), [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md), [docs/DATABASE.md](docs/DATABASE.md), and [examples/README.md](examples/README.md).
-
----
+**Research-use notice:** Gparatype v0.2.1 is a research-use prototype that has not undergone independent external validation. Results should not be used as a standalone veterinary diagnostic or clinical decision-making tool.
 
 ## Overview
 
-Gparatype is an architecture-aware bioinformatics framework for genome-based interpretation of serovar-associated capsule architectures in *Glaesserella parasuis*.
+Gparatype is a bioinformatics framework for interpreting serovar-associated capsule genomic architectures in *Glaesserella parasuis*, the causative agent of Glässer's disease in swine. It analyzes whole-genome **assembly FASTA** files against curated Howell capsule-locus references. Raw sequencing reads (FASTQ) are not accepted as input.
 
-The framework analyzes **whole-genome assembly FASTA files** against curated Howell capsule-locus references. The input is a nucleotide assembly in **FASTA format**, not raw sequencing reads in FASTQ format.
-
-Rather than relying on a single capsule marker, Gparatype integrates multiple genomic signals, including:
-
-* diagnostic-region sequence evidence;
-* capsule-associated gene content;
-* local gene order and genomic neighborhood;
-* competing-serovar evidence;
-* assembly completeness and sequence-coverage signals.
-
-The default `0.2.1` engine uses a hybrid evidence framework designed to favor conservative interpretations when genomic evidence is incomplete, conflicting, or insufficient for a confident assignment.
+Rather than relying on a single capsule marker, Gparatype integrates diagnostic-region sequence evidence, capsule-associated gene content, local gene order and genomic neighborhood, competing-serovar evidence, and assembly completeness and sequence-coverage signals. Its hybrid evidence framework reports uncertainty when evidence is incomplete or conflicting instead of forcing a numbered serovar assignment.
 
 ### Biological interpretation
 
-The primary typing unit used by Gparatype is a **serovar-associated genomic capsule architecture**. This represents a computational interpretation of capsule-locus evidence and should not automatically be considered equivalent to phenotypic serovar identity.
+Gparatype's primary typing unit is the **serovar-associated genomic capsule architecture**. A computational architecture interpretation is not necessarily equivalent to phenotypic serovar identity. The current version does not claim reliable discrimination of all 15 classical serovars:
 
-Gparatype does **not** claim reliable discrimination of all 15 classical *G. parasuis* serovars.
-
-In particular:
-
-* Serovars **5 and 12** are reported as the combined state `SEROVAR_5_OR_12`.
-* Serovars **2, 8, and 10** remain biologically unresolved at population scale.
-* Samples with insufficient, atypical, or conflicting genomic evidence may receive an ambiguity or limitation state rather than an unsupported numbered assignment.
-
-This conservative behavior is intentional: **uncertain genomic evidence is reported as uncertain rather than forced into a serovar label.**
-
----
+- Serovars **5 and 12** are reported together as `SEROVAR_5_OR_12`.
+- Serovars **2, 8 and 10** remain biologically unresolved at population scale.
+- Insufficient, atypical or conflicting genomic evidence may produce an explicit ambiguity or limitation state.
 
 ## Installation
 
 ### Requirements
 
-* Python ≥ 3.9
-* NCBI BLAST+ with `blastn` available on `PATH`
+- Python **3.9 or newer**
+- NCBI BLAST+, with `blastn` available on your `PATH` (installed separately)
 
-
-### Recommended installation
-
-Gparatype requires Python ≥3.9 and NCBI BLAST+ (`blastn` available on `PATH`).
-
-Install Gparatype from PyPI:
+### Install from PyPI
 
 ```bash
 pip install gparatype
@@ -68,190 +39,91 @@ Verify the installation:
 ```bash
 gparatype --version
 gparatype --help
+blastn -version
 ```
 
-The package includes the bundled research database `GparatypeDB-2026.1-freeze`.
-
-### Installation from source
-
-To install the latest development version directly from GitHub:
-
-```bash
-git clone https://github.com/Ekuufire/Gparatype-public.git
-cd Gparatype-public
-pip install ".[dev]"
-```
-The standard package installation includes the bundled research database:
-
-```text
-GparatypeDB-2026.1-freeze
-```
-
----
+The Python package includes the `GparatypeDB-2026.1-freeze` research database; BLAST+ is an external requirement.
 
 ## Quick start
 
-Check the installation:
-
-```bash
-gparatype --help
-gparatype --version
-```
-
-Run Gparatype on a whole-genome assembly:
+Run Gparatype on an assembled *G. parasuis* genome in FASTA format:
 
 ```bash
 gparatype \
-  --input <assembly.fasta> \
+  --input assembly.fasta \
   --output-dir results/example_run
 ```
 
-The command above uses the **Gparatype v0.2.1** hybrid engine by default. The `--engine` option is therefore not required for the standard workflow.
+The default engine is `0.2.1`; specifying `--engine` is unnecessary for standard use. An alternative compatible database can be provided with `--database /path/to/database`.
 
-The equivalent explicit command is:
-```bash
-gparatype \
-  --input <assembly.fasta> \
-  --engine 0.2.1 \
-  --output-dir results/example_run
-```
+### Main command-line options
 
-For routine use, the shorter command is recommended.
+| Option | Description |
+|---|---|
+| `--input`, `-i` | **Required:** whole-genome assembly in FASTA format |
+| `--output-dir`, `-o` | Directory for output files |
+| `--engine` | Analysis engine; default `0.2.1` |
+| `--database` | Optional path to a compatible alternative database |
+| `--reported-serovar` | Optional reporting metadata; does **not** influence the prediction |
+| `--keep-blast` | Retain intermediate BLAST TSV output |
+| `--verbose`, `-v` | Show additional processing information |
 
-### Engine selection
-
-**Gparatype v0.2.1** is the default and recommended engine for the current public release.
-
-Previous engines are retained for reproducibility of earlier analyses.
-
-#### v0.2 — Phase 5A
-
-The v0.2 engine is retained as a frozen legacy workflow:
-```bash
-gparatype \
-  --input <assembly.fasta> \
-  --engine 0.2 \
-  --output-dir results/phase5a_example
-```
-#### v0.1.1 — Baseline
-
-The v0.1.1 baseline engine is retained for reproducibility:
-```bash
-gparatype \
-  --input <assembly.fasta> \
-  --engine 0.1.1 \
-  --output-dir results/baseline_example
-```
-
-Legacy engines should generally be used when reproducing or comparing earlier analyses rather than for new routine analyses.
-
-### Python module invocation
-Gparatype can also be invoked as a Python module:
-```bash
-python -m gparatype
-```
-
-The installed `gparatype` command is the recommended interface for normal use.
-
-### Command-line options
-
-| Flag                  | Description                                                        |
-| --------------------- | ------------------------------------------------------------------ |
-| `--input` / `-i`      | **Required.** Whole-genome assembly in FASTA format                |
-| `--engine`            | Analysis engine. Default: `0.2.1`                                  |
-| `--database`          | Optional path to an alternative Gparatype database                 |
-| `--output-dir` / `-o` | Directory for analysis outputs                                     |
-| `--reported-serovar`  | Optional metadata for reporting; does **not** influence prediction |
-| `--keep-blast`        | Retain intermediate BLAST TSV output                               |
-| `--verbose` / `-v`    | Print additional paths and processing information                  |
-
-Legacy engines (`0.2` and `0.1.1`) are retained for reproducibility of earlier analyses.
-
----
+Earlier engines (`0.2` and `0.1.1`) remain available for reproducibility of previous analyses; see reproducibility documentation.
 
 ## Output
 
-Gparatype writes results to the specified output directory.
+Gparatype writes the following files to the selected output directory:
 
-| File                          | Description                       |
-| ----------------------------- | --------------------------------- |
-| `<sample>.gparatype_v02.txt`  | Human-readable analysis summary   |
-| `<sample>.gparatype_v02.json` | Machine-readable run payload      |
-| `summary.tsv`                 | One-row sample summary            |
-| `architecture_evidence.tsv`   | Per-serovar architecture evidence |
-| `component_evidence.tsv`      | Component-level evidence          |
+| File | Description |
+|---|---|
+| `<sample>.gparatype_v02.txt` | Human-readable analysis summary |
+| `<sample>.gparatype_v02.json` | Machine-readable run payload |
+| `summary.tsv` | One-row sample summary |
+| `architecture_evidence.tsv` | Per-serovar architecture evidence |
+| `component_evidence.tsv` | Component-level evidence |
 
-The console reports the final result state, primary architecture interpretation, and a corresponding interpretation message.
+The console also reports the result state, primary architecture interpretation and an interpretation message.
 
----
+### Interpretation states
 
-## Result states
+| State | Meaning |
+|---|---|
+| `SUPPORTED_SEROVAR_ASSOCIATED_ARCHITECTURE` | Evidence supports a serovar-associated capsule architecture |
+| `SEROVAR_5_OR_12` | Evidence supports the shared genomic state associated with serovars 5 and 12 |
+| `AMBIGUOUS_ARCHITECTURE` | Multiple interpretations remain plausible |
+| `ATYPICAL_CAPSULE_PROFILE` | Genomic features do not cleanly match an expected architecture |
+| `INSUFFICIENT_CAPSULE_SEQUENCE` | Capsule-locus sequence evidence is insufficient |
+| `ASSEMBLY_LIMITED` | Assembly characteristics limit interpretation |
+| `CONFLICTING_GENOMIC_EVIDENCE` | Genomic signals support competing interpretations |
+| `NO_RECOGNIZED_CAPSULE_ARCHITECTURE` | No recognized capsule architecture identified |
+| `SPECIES_CHECK_FAILED` | Input did not satisfy the expected species-level check |
+| `ERROR` | Analysis could not be completed successfully |
 
-The v0.2.1 engine reports one of the following result states:
+These states distinguish supported genomic interpretations from unresolved or technically limited cases.
 
-| Result state                                | General interpretation                                                            |
-| ------------------------------------------- | --------------------------------------------------------------------------------- |
-| `SUPPORTED_SEROVAR_ASSOCIATED_ARCHITECTURE` | Genomic evidence supports a serovar-associated capsule architecture               |
-| `SEROVAR_5_OR_12`                           | Evidence supports the shared genomic state associated with serovars 5 and 12      |
-| `AMBIGUOUS_ARCHITECTURE`                    | Multiple interpretations remain plausible                                         |
-| `ATYPICAL_CAPSULE_PROFILE`                  | Capsule-associated genomic features do not match an expected architecture cleanly |
-| `INSUFFICIENT_CAPSULE_SEQUENCE`             | Available sequence does not provide sufficient capsule-locus evidence             |
-| `ASSEMBLY_LIMITED`                          | Assembly characteristics limit interpretation                                     |
-| `CONFLICTING_GENOMIC_EVIDENCE`              | Genomic signals support competing interpretations                                 |
-| `NO_RECOGNIZED_CAPSULE_ARCHITECTURE`        | No recognized capsule architecture was identified                                 |
-| `SPECIES_CHECK_FAILED`                      | Input did not satisfy the expected species-level check                            |
-| `ERROR`                                     | Analysis could not be completed successfully                                      |
+## Reference database
 
-These states are intended to distinguish **supported genomic interpretations from unresolved or technically limited cases**.
+The default database is **GparatypeDB-2026.1-freeze**. It contains curated capsule-locus reference material used by the v0.2.1 research engine. The installed database is located under `gparatype/data/GparatypeDB-2026.1-freeze/`; a repository copy is maintained under `data/gparatype_db/GparatypeDB-2026.1-freeze/`.
 
----
-
-## Database
-
-The default research database is:
-
-```text
-GparatypeDB-2026.1-freeze
-```
-
-Repository location:
-
-```text
-data/gparatype_db/GparatypeDB-2026.1-freeze/
-```
-
-The database contains the curated capsule-locus reference material used by the Gparatype v0.2.1 research engine.
-
-The checksum marker for the database `checksums.sha256` file is:
+Database `checksums.sha256` checksum marker:
 
 ```text
 b01061ccc091d3cfe1b42381aea0a1cf9f891e7bffce76f7ebcfe312fa34285a
 ```
 
-Database composition, provenance, reference selection, and reproducibility information are described in [docs/DATABASE.md](docs/DATABASE.md).
+See [database documentation](docs/DATABASE.md) for composition, provenance and reference selection.
 
----
+## Validation and limitations
 
-## Validation and development status
+Gparatype v0.2.1 has undergone **internal development evaluation** using a clean evaluation subset (**n = 315**). The development cohort includes data associated with framework development and must **not** be interpreted as an independent benchmark. Independent external and clinical validation have not yet been completed.
 
-Gparatype v0.2.1 has undergone **internal development evaluation** but has **not yet undergone independent external validation**.
+Interpretations may be affected by incomplete resolution of some serovar groups, fragmented assemblies, reference-database coverage and conflicting genomic evidence. The software is not intended to replace phenotypic serotyping, laboratory confirmation, established diagnostic workflows or independent epidemiological investigation.
 
-Current validation status:
-
-* **Development evaluation:** Internal comparison using a clean evaluation subset (`n=315`)
-* **Development cohort:** Contains data associated with framework development and should therefore not be interpreted as an independent benchmark
-
-Development results are intended to assess framework behavior and identify areas requiring further evaluation. They should **not** be presented as independent external validation or clinical performance estimates.
-
-Future evaluation should include independent datasets, geographically and epidemiologically distinct isolates, and additional laboratory-confirmed phenotypic information where available.
-
-For the detailed validation framework and limitations, see [docs/LIMITATIONS.md](docs/LIMITATIONS.md) and [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md).
-
----
+Future evaluation should include independent datasets, geographically and epidemiologically distinct isolates, and additional laboratory-confirmed phenotypic information where available. See [limitations](docs/LIMITATIONS.md) for details.
 
 ## Reproducibility
 
-For reproducible analyses, record and retain:
+Record these components when reporting analyses:
 
 ```text
 Software version: 0.2.1
@@ -259,96 +131,29 @@ Engine:           0.2.1
 Database:         GparatypeDB-2026.1-freeze
 ```
 
-Large validation genome FASTA files are **not distributed with this public release**.
-
-The public repository provides the software, research database, documentation, examples, and tests necessary to understand and reproduce the computational workflow where the corresponding input data are independently available.
-
-See [docs/REPRODUCIBILITY.md](docs/REPRODUCIBILITY.md) for additional information.
-
----
-
-## Research use and limitations
-
-Gparatype is intended to support **research into genomic diversity, capsule architecture, and serovar-associated variation in *G. parasuis*.**
-
-It is not currently intended to replace:
-
-* phenotypic serotyping;
-* laboratory confirmation;
-* established diagnostic workflows;
-* epidemiological investigation based on independent evidence.
-
-The framework should be interpreted in the context of its reference database, assembly quality, genomic diversity, and current validation status.
-
-Important limitations include incomplete resolution of certain serovar groups, potential effects of assembly fragmentation, database dependence, and the absence of independent external and clinical validation.
-
-See [docs/LIMITATIONS.md](docs/LIMITATIONS.md) for the complete limitations statement.
+Large validation genome FASTA files are not distributed with this release. The repository contains software, the research database, documentation, examples and tests for reproducing the computational workflow when input data are independently available. For legacy-engine instructions and additional details, see [reproducibility documentation](docs/REPRODUCIBILITY.md).
 
 ## Citation
 
-A manuscript describing Gparatype is in preparation.
-
-For software citation, please use the information provided in
-[CITATION.cff](CITATION.cff).
-
-**No DOI is currently assigned.**
-
-Once a manuscript or archival software release receives a DOI, the citation
-information will be updated accordingly.
-
----
+A manuscript describing Gparatype is in preparation. Until a DOI is assigned, please use the software citation metadata in [CITATION.cff](CITATION.cff), specifying the software version and database version used. This section will be updated when an archival software release or manuscript receives a DOI.
 
 ## References
 
-The biological reference framework used by Gparatype builds upon published
-characterization of the capsular polysaccharide biosynthesis loci and
-molecular serotyping of *Glaesserella parasuis* (formerly *Haemophilus parasuis*).
+- Howell KJ, Weinert LA, Luan S-L, et al. Gene content and diversity of the loci encoding biosynthesis of capsular polysaccharides of the 15 serovar reference strains of *Haemophilus parasuis*. *Journal of Bacteriology*. 2013;195(18):4264–4273. [https://doi.org/10.1128/JB.00471-13](https://doi.org/10.1128/JB.00471-13)
 
-1. Howell KJ, Weinert LA, Luan S-L, et al. Gene content and diversity of
-   the loci encoding biosynthesis of capsular polysaccharides of the
-   15 serovar reference strains of *Haemophilus parasuis*.
-   *Journal of Bacteriology*. 2013;195(18):4264–4273.
-   doi:10.1128/JB.00471-13.
+- Howell KJ, Peters SE, Wang J, et al. Development of a multiplex PCR assay for rapid molecular serotyping of *Haemophilus parasuis*. *Journal of Clinical Microbiology*. 2015;53(12):3812–3821. [https://doi.org/10.1128/JCM.01991-15](https://doi.org/10.1128/JCM.01991-15)
 
-2. Howell KJ, Peters SE, Wang J, et al. Development of a multiplex PCR
-   assay for rapid molecular serotyping of *Haemophilus parasuis*.
-   *Journal of Clinical Microbiology*. 2015;53(12):3812–3821.
-   doi:10.1128/JCM.01991-15.
+## Contributors and license
 
----
+Gparatype was developed and is maintained by **Emmanuel Kuufire**. Scientific, technical, advisory and other contributions are acknowledged in [CONTRIBUTORS.md](CONTRIBUTORS.md).
 
-## Contributors
+Gparatype is distributed under the MIT License.
 
-Gparatype was developed and is maintained by **Emmanuel Kuufire**.
+## Documentation
 
-Scientific, technical, advisory, and other contributions are acknowledged in
-[CONTRIBUTORS.md](CONTRIBUTORS.md).
+- [Limitations and validation](docs/LIMITATIONS.md)
+- [Reproducibility](docs/REPRODUCIBILITY.md)
+- [Reference database](docs/DATABASE.md)
+- [Examples](examples/README.md)
 
----
-
-## License
-
-Gparatype is released under the MIT License.
-
-See the [LICENSE](LICENSE) file for the full license text.
-
-## Project structure
-
-```text
-Gparatype-public/
-├── src/gparatype/             # Gparatype v0.2.1 engine and legacy paths
-├── data/gparatype_db/         # GparatypeDB-2026.1-freeze
-├── docs/                      # Documentation and release information
-├── examples/                  # Usage examples and guidance
-├── tests/                     # Public installation and software tests
-├── pyproject.toml
-└── CITATION.cff
-```
-
----
-
-## Status
-
-**Gparatype v0.2.1 is a research prototype under active evaluation.**
-
-The current release provides an architecture-aware framework for interpreting capsule-associated genomic diversity in *Glaesserella parasuis*. Independent validation is required to establish performance beyond the current development setting.
+**Status:** Gparatype v0.2.1 is a research-use release under active evaluation. Independent validation is required to establish performance beyond the current development setting.
