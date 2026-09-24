@@ -52,50 +52,39 @@ This conservative behavior is intentional: **uncertain genomic evidence is repor
 * Python ≥ 3.9
 * NCBI BLAST+ with `blastn` available on `PATH`
 
+
 ### Recommended installation
 
-Clone the repository and install from the checkout root:
+Gparatype requires Python ≥3.9 and NCBI BLAST+ (`blastn` available on `PATH`).
+
+Install Gparatype from PyPI:
+
+```bash
+pip install gparatype
+```
+
+Verify the installation:
+
+```bash
+gparatype --version
+gparatype --help
+```
+
+The package includes the bundled research database `GparatypeDB-2026.1-freeze`.
+
+### Installation from source
+
+To install the latest development version directly from GitHub:
 
 ```bash
 git clone https://github.com/Ekuufire/Gparatype-public.git
 cd Gparatype-public
 pip install ".[dev]"
 ```
-
 The standard package installation includes the bundled research database:
 
 ```text
 GparatypeDB-2026.1-freeze
-```
-
-The database is installed with the package under:
-
-```text
-gparatype/data/GparatypeDB-2026.1-freeze/
-```
-
-For transparency and clone-and-run reproducibility, the same database is maintained in the repository under:
-
-```text
-data/gparatype_db/GparatypeDB-2026.1-freeze/
-```
-
-Gparatype resolves the package-bundled database first and then the repository copy.
-
-A different compatible database can be supplied explicitly with:
-
-```bash
---database /path/to/GparatypeDB-2026.1-freeze
-```
-
-### Optional conda environment
-
-An environment specification is provided in `environment.yml`:
-
-```bash
-conda env create -f environment.yml
-conda activate gparatype
-pip install -e ".[dev]"
 ```
 
 ---
